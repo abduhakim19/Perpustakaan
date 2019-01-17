@@ -1,0 +1,34 @@
+.jContent {
+    color: rgb(165, 165, 165);
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px;
+}
+
+.height-card {
+    height: 77px;
+}
+
+.ukuran-icon {
+    font-size: 32px; 
+    color: white;
+}
+
+.bg-icon-Admin {
+    background-color: rgb(36, 187, 247);
+}
+
+.bg-icon-Users {
+    background-color: rgb(30, 247, 146);
+}
+
+.bg-icon-Member{
+    background-color: rgb(223, 99, 50);
+}
+
+.bg-icon-Books {
+    background-color: rgb(238, 51, 213);
+}
+.text-judul-card {
+    font-size: 17px; 
+    font-family:'Roboto', sans-serif;
+}

@@ -1,0 +1,63 @@
+.scrollable {
+    overflow-x: scroll;
+}
+.jContent {
+    color: rgb(165, 165, 165);
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px;
+}
+
+.btn-aksi {
+    font-size: 15px; 
+    padding: 8px;
+    color: white; 
+    cursor:pointer;
+}
+.bg-hapus {
+    background-color: red; 
+}
+.bg-edit {
+    background-color: blue;
+}
+.bg-print {
+    background-color: rgb(29, 155, 29);
+}
+.btn-search {
+    cursor: pointer;
+}
+
+.bg-btn-tambah{
+    background-color: blue;
+    color: white;
+}
+
+.swal-button--confirm {
+    background-color: #dd6b55; /* confirmButtonColor: "#DD6B55", */
+  }
+  
+  .swal-modal .swal2-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1.2em;
+    height: 1.2em;
+    transition: color 0.1s ease-out;
+    border: none;
+    background: transparent;
+    color: #cccccc;
+    font-family: serif;
+    font-size: 40px;
+    cursor: pointer;
+  }
+  
+  .swal-modal .swal2-close:hover {
+    color: #f27474;
+  }
+
+.table-data>tbody>tr>td {
+    padding: 0.7% 1% 0.7% 1%;
+}
+
+.hiddenBarcode{
+    display: none;
+}

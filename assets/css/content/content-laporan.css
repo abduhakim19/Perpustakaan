@@ -1,0 +1,26 @@
+.jContent {
+    color: rgb(165, 165, 165);
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px;
+}
+
+
+.bawah:hover{
+    background-color: #3BAFDA;
+    color: white;
+}
+.bawah {
+    padding: 1% 0 1% 2%;
+    cursor: pointer;
+    font-size: 16px;
+    color: rgb(39, 39, 39);
+    background-color: white;
+}
+
+.content-bawah  {
+    overflow-y: scroll; 
+    position: absolute; 
+    z-index: 10; 
+    display: none;
+    max-height: 230px;
+}

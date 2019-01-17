@@ -1,0 +1,18 @@
+.jContent {
+    color: rgb(165, 165, 165);
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px;
+}
+
+.btn-aksi {
+    font-size: 15px; 
+    padding: 8px;
+    color: white; 
+    cursor:pointer;
+}
+.bg-hapus {
+    background-color: red; 
+}
+.bg-edit {
+    background-color: blue;
+}

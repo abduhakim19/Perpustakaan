@@ -1,0 +1,31 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src : url('http://localhost/Perpustakaan/assets/font/Roboto/Roboto-Regular.ttf');
+    src : url('http://localhost/Perpustakaan/assets/font/Roboto/Roboto-Regular.ttf') format('ttf'), 
+    url('http://localhost/Perpustakaan/assets/font/Roboto/Roboto-Regular.ttf') format('trueType');
+}
+
+.container {
+    min-height: 100%;
+    position: relative;
+}
+
+.bg-content {
+    padding-bottom: 42px;
+    background-color: rgb(245, 245, 245);
+}
+
+.posisi-absolute {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+

@@ -1,0 +1,8 @@
+.jfooter {
+    background-color: rgb(51, 51, 141);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    height: 42px;
+    padding: 1% 0 1% 3%;
+}

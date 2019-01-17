@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'Robotoa';
+    src : url('http://localhost/Perpustakaan/assets/font/Roboto/Roboto-Bold.ttf');
+    src : url('http://localhost/Perpustakaan/assets/font/Roboto/Roboto-Bold.ttf') format('ttf'), 
+    url('http://localhost/Perpustakaan/assets/font/Roboto/Roboto-Bold.ttf') format('trueType');
+}
+
+.bg-logout a, .bg-logout a:hover {
+        color: white;
+        font-size: 15px;
+        text-decoration: none;
+}
+
+
+.bg-header {
+    background-color: rgb(76, 76, 219);
+    color: white;
+    height: 70px;
+}
+
+.jAplikasi {
+    font-family: 'Robotoa', sans-serif;
+    font-size: 24px;
+}
+
+.bg-link {
+    font-family: 'Roboto_Light', sans-serif;
+    background-color: #E9ECEF;
+    height: 40px;
+}
+
+.text-link a {
+    text-decoration: none;
+}
+
+.bg-logout {
+    cursor: pointer;
+}

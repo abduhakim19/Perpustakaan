@@ -1,0 +1,101 @@
+.jContent {
+    color: rgb(165, 165, 165);
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px;
+}
+
+.btn-aksi {
+    font-size: 15px; 
+    padding: 8px;
+    color: white; 
+    cursor:pointer;
+}
+.bg-hapus {
+    background-color: red; 
+}
+.bg-edit {
+    background-color: blue;
+}
+
+
+
+.btn-search {
+    cursor: pointer;
+}
+
+.bg-info {
+    background-color: rgb(28, 156, 28);
+    padding-left: 13px;
+    padding-right: 13px;
+}
+.bg-btn-tambah{
+    background-color: blue;
+    color: white;
+}
+
+.swal-button--confirm {
+    background-color: #dd6b55; /* confirmButtonColor: "#DD6B55", */
+}
+  
+.swal-modal .swal2-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1.2em;
+    height: 1.2em;
+    transition: color 0.1s ease-out;
+    border: none;
+    background: transparent;
+    color: #cccccc;
+    font-family: serif;
+    font-size: 40px;
+    cursor: pointer;
+  }
+  
+.swal-modal .swal2-close:hover {
+    color: #f27474;
+}
+
+.gmbrProfil {
+    width: 100%;
+    height: 100%;
+}
+.divBugkusG{
+    height: 300px;
+}
+
+.PGambar {
+    width: 100%;
+    height: 100%;
+}
+
+.BPGambar {
+    background-color: grey;
+    width: 200px;
+    height: 200px;
+    display: none;
+}
+
+.EBPGambar {
+    width: 200px;
+    height: 200px;
+}
+
+.loader {
+    z-index: 999;
+    position: absolute;
+    top: 140px;
+    left: 50%;
+    border: 16px solid white;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {transform: rotate(0deg)}
+    100% {transform: rotate(360deg)}
+}
+

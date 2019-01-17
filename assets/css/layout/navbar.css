@@ -1,0 +1,118 @@
+
+
+@font-face {
+    font-family: 'Robotoa';
+    src : url('http://localhost/Perpustakaan/assets/font/Roboto/Roboto-Bold.ttf');
+    src : url('http://localhost/Perpustakaan/assets/font/Roboto/Roboto-Bold.ttf') format('ttf'), 
+    url('http://localhost/Perpustakaan/assets/font/Roboto/Roboto-Bold.ttf') format('trueType');
+}
+
+@font-face {
+    font-family: 'Roboto_light';
+    src : url('http://localhost/Perpustakaan/assets/font/Roboto/Roboto-Light.ttf');
+    src : url('http://localhost/Perpustakaan/assets/font/Roboto/Roboto-Light.ttf') format('ttf'), 
+    url('http://localhost/Perpustakaan/assets/font/Roboto/Roboto-Light.ttf') format('trueType');
+}
+
+.navbar-style {
+    color: white;
+}
+
+@media (min-height : 600px) {
+    .g-user{
+        height: 110px !important;
+    }
+}
+
+@media (max-height: 550px) {
+    .g-user {
+        height: 80px !important;
+    }
+}
+
+.g-user {
+    border-radius: 50%;
+    height: 95px;
+    position: relative;
+    background-color: grey;
+}
+
+.nav-item a {
+    padding: 5% 2% 5% 7%;
+    font-size: 14px;
+    color: white;
+    font-family: 'Roboto_Light', sans-serif;
+    width: 100%;
+    display: block
+}
+.n-user {
+    background-color: transparent;
+    font-family: 'Roboto_Light', sans-serif;
+}
+.nav-item a i {
+    margin-right: 4%;
+}
+
+.bg-left {
+    background-color:rgb(76, 76, 219);
+}
+
+.nav-item a:hover {
+    background-color: blue;
+    text-decoration: none;
+    color: white;
+}
+
+
+
+.g-user img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.bg-user {
+    font-family: 'Robotoa', sans-serif;
+    background-color: rgb(51, 51, 141);
+}
+
+
+.navbar-nav > li > .bg-wow {
+    font-family: 'Robotoa', sans-serif;
+    background-color: rgb(51, 51, 141);
+}
+
+/* width */
+.bg-left::-webkit-scrollbar {
+    width:6px;
+  }
+  
+  /* Track */
+.bg-left::-webkit-scrollbar-track {
+    background: rgb(8, 8, 219); 
+}
+   
+  /* Handle */
+.bg-left::-webkit-scrollbar-thumb {
+    background: rgb(6, 6, 107); 
+}
+  
+  /* Handle on hover */
+.bg-left::-webkit-scrollbar-thumb:hover {
+    background: rgb(6, 6, 94); 
+}
+
+.dropdown1-toggle:after {
+
+    content: "\f104";
+    margin-right: 8px;
+    font-family: 'Font Awesome\ 5 Free';
+    color: white;
+    font-weight: 900;
+    transform: rotate(-90deg) ;
+    transition: all linear 0.25s;
+    float: right;
+}
+.dropdown1-toggle.collapsed:after {
+    transform: rotate(0deg) ;
+}

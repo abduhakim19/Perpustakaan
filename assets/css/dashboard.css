@@ -1,0 +1,24 @@
+html, body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src : url('http://localhost/Perpustakaan/assets/font/Roboto/Roboto-Regular.ttf');
+    src : url('http://localhost/Perpustakaan/assets/font/Roboto/Roboto-Regular.ttf') format('ttf'), 
+    url('http://localhost/Perpustakaan/assets/font/Roboto/Roboto-Regular.ttf') format('trueType');
+}
+
+
+.bg-content {
+    background-color: rgb(245, 245, 245);
+}
+
+.posisi-relative {
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+
