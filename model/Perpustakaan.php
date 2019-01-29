@@ -101,16 +101,21 @@ class Perpustakaan extends Koneksi {
     }
 
     public function selectPeminjaman($id){
-        $stmt = $this->conn->prepare('SELECT * FROM perpustakaan_pinjam as a inner join perpustakaan_buku as b on a.id_buku = b.id_buku inner join perpustakaan_pinjam_status as c on a.id_status_pinjam = c.id_status inner join perpustakaan_buku_jenis as d on b.id_jenis = d.id_jenis WHERE a.id_anggota = ? ORDER BY nama_status ASC');
+        $stmt = $this->conn->prepare('SELECT * FROM perpustakaan_pinjam as a inner join perpustakaan_buku as b on a.id_buku = b.id_buku inner join perpustakaan_pinjam_status as c on a.id_status_pinjam = c.id_status inner join perpustakaan_buku_jenis as d on b.id_jenis = d.id_jenis inner join perpustakaan_denda as e on a.id_denda = e.id_denda WHERE a.id_anggota = ? ORDER BY nama_status ASC');
 
         $stmt->execute([$id]);
 
         return $stmt->fetchAll();
     }
 
-    // public function selectPeminjamanDataTables(){
-    //     return  $this->conn;
-    // }
+    public function selectdiffDatePinjam($id){
+        $stmt = $this->conn->prepare('SELECT datediff(date(now()), tanggal_kembali) as jarak from perpustakaan_pinjam WHERE id_pinjam  = ?');
+
+        $stmt->execute([$id]);
+
+        return $stmt->fetchAll();
+    }
+
 
     public function tampilLaporanTanggal($dari, $sampai){
         $stmt = $this->conn->prepare('SELECT * FROM perpustakaan_pinjam as a inner join perpustakaan_buku as b on a.id_buku = b.id_buku inner join perpustakaan_pinjam_status as c on a.id_status_pinjam = c.id_status inner join perpustakaan_buku_jenis as d on b.id_jenis = d.id_jenis inner join perpustakaan_anggota as e on e.id_anggota = a.id_anggota inner join data_murid as f on f.Id_data_murid = e.id_data_murid inner join murid as g on f.id_murid = g.id_murid  WHERE tanggal_pinjam between ? and ?');
@@ -216,10 +221,10 @@ class Perpustakaan extends Koneksi {
         return false;
     }
 
-    public function insertPegawai($id, $nama, $email, $nmr, $username, $password, $gambar){
-        $stmt = $this->conn->prepare('INSERT INTO perpustakaan_pegawai (id_pegawai, nama_pegawai, email, nomor_handphone, poto, username, password ) VALUES(? , ? , ?, ?, ?, ?, ?)');
+    public function insertPegawai($id, $nama, $email, $nmr, $username, $password, $gambar, $role){
+        $stmt = $this->conn->prepare('INSERT INTO perpustakaan_pegawai (id_pegawai, nama_pegawai, email, nomor_handphone, poto, username, password, role) VALUES(? , ? , ?, ?, ?, ?, ?, ?)');
 
-        $cek = $stmt->execute([$id, $nama, $email, $nmr,  $gambar,$username, $password]);
+        $cek = $stmt->execute([$id, $nama, $email, $nmr,  $gambar,$username, $password, $role]);
 
         if ($cek) {
             return true;
@@ -368,10 +373,10 @@ class Perpustakaan extends Koneksi {
         return false;
     }
 
-    public function editStatusPeminjaman($idPinjam, $idStatus){
-        $stmt = $this->conn->prepare("UPDATE perpustakaan_pinjam SET id_status_pinjam = :statusP WHERE id_pinjam = :id");
+    public function editStatusPeminjaman($idPinjam, $idStatus, $denda){
+        $stmt = $this->conn->prepare("UPDATE perpustakaan_pinjam SET id_status_pinjam = :statusP, denda = :denda WHERE id_pinjam = :id");
 
-        $cek = $stmt->execute(['statusP' => $idStatus, 'id'=> $idPinjam]);
+        $cek = $stmt->execute(['statusP' => $idStatus, 'id'=> $idPinjam, 'denda'=>$denda]);
         if ($cek) {
             return true;
         }
@@ -404,6 +409,16 @@ class Perpustakaan extends Koneksi {
         $stmt = $this->conn->prepare('UPDATE data_murid_pivot_kelas as a inner join kelas as b on a.id_kelas = b.id_kelas SET a.id_jurusan = :idJurusan, b.jenjang = :jenjang, b.grade= :grade WHERE a.id_pivot_kelas = :id');
 
         $cek = $stmt->execute(['id' => $id, 'idJurusan'=>$jurusan, 'jenjang' => $jenjang, 'grade'=>$grade]);
+        if ($cek) {
+            return true;
+        }
+        return false;
+    }
+
+    public function editDenda($jarak, $denda){
+        $stmt = $this->conn->prepare('UPDATE perpustakaan_denda SET jangka= ?, harga= ? WHERE id_denda=1 ');
+
+        $cek = $stmt->execute([$jarak, $denda]);
         if ($cek) {
             return true;
         }

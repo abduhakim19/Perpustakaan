@@ -18,6 +18,10 @@ class Buku extends Controller {
         $this->view('waktu');
     }
 
+    public function denda(){
+        $this->view('denda');
+    }
+
     public function tampilKategori(){
         echo json_encode($this->model->selectAll('perpustakaan_buku_jenis'));
     }
@@ -28,6 +32,10 @@ class Buku extends Controller {
             $select = $this->model->selectSingleBuku($_GET['id']);
         }
         echo json_encode($select);
+    }
+
+    public function tampilDenda(){
+        echo json_encode($this->model->selectAll('perpustakaan_denda'));
     }
 
     public function insertPivotKelas(){
@@ -207,6 +215,15 @@ class Buku extends Controller {
         if ($edit) {
             echo "berhasil";
         }else {
+            header('HTTP/1.1 500 Internal Server Error');
+        }
+    }
+
+    public function editDenda(){
+        $edit = $this->model->editDenda($_POST['jarak'], $_POST['denda']);
+        if ($edit) {
+            echo 'berhasil';
+        }else{
             header('HTTP/1.1 500 Internal Server Error');
         }
     }

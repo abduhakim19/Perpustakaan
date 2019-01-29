@@ -9,9 +9,13 @@
 
     <nav class="navbar navbar-style w-100 pl-0 pr-0 pt-0" >
         <ul class="navbar-nav w-100">
+            <?php
+                if ($_SESSION['user']['role'] == 1 ){
+
+            ?>
             <li class="nav-item bg-user"> 
                 <div class="g-user w-50 mx-auto mt-3">
-                    <img id="g-user" src="<?=BASE_URL?>/assets/image_admin/<?=$_SESSION['img']?>">
+                    <img id="g-user" src="<?=BASE_URL?>/assets/image_admin/<?=$_SESSION['user']['img']?>">
                 </div>
                 <div id="n-user" class="n-user text-center mt-2 mb-2">
                     hi , <?=Session::get()?>
@@ -31,6 +35,7 @@
                     <a class="dropdown-item bg-dropdownwow" href="<?=BASE_URL?>/Buku/">Buku</a>
                     <a class="dropdown-item" href="<?=BASE_URL?>/Buku/Kategori">Kategori</a>
                     <a class="dropdown-item" href="<?=BASE_URL?>/Buku/Waktu">Waktu Pengembalian</a>
+                    <a class="dropdown-item" href="<?=BASE_URL?>/Buku/Denda">Denda</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -69,6 +74,41 @@
             <li class="nav-item">
                 <a href="<?=BASE_URL?>/BackUp/"><i class="fas fa-retweet"></i>  Back Up</a>
             </li>
+            <?php
+
+                } else if ($_SESSION['user']['role'] == 2) {
+                    
+            ?>
+            <li class="nav-item bg-user"> 
+                <div class="g-user w-50 mx-auto mt-3">
+                    <img id="g-user" src="<?=BASE_URL?>/assets/image_admin/<?=$_SESSION['user']['img']?>">
+                </div>
+                <div id="n-user" class="n-user text-center mt-2 mb-2">
+                    hi , <?=Session::get()?>
+                </div>
+            </li>
+            <li class="nav-item mt-2">
+                <a href="<?=BASE_URL?>/Home/" class="w-100"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="<?=BASE_URL?>/Peminjaman/"> <i class="far fa-save"></i> Peminjaman</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="dropdown1-toggle collapsed"  data-toggle="collapse" data-target="#wow1" style="cursor: pointer;"> 
+                    <i class="fas fa-book"></i> Buku
+                </a>
+                <div id="wow1" class="collapse  bg-wow rounded-0 pt-0 pb-0" style="border-left: 3px solid white;">
+                    <a class="dropdown-item bg-dropdownwow" href="<?=BASE_URL?>/Buku/">Buku</a>
+                    <a class="dropdown-item" href="<?=BASE_URL?>/Buku/Kategori">Kategori</a>
+                    <a class="dropdown-item" href="<?=BASE_URL?>/Buku/Waktu">Waktu Pengembalian</a>
+                    <a class="dropdown-item" href="<?=BASE_URL?>/Buku/Denda">Denda</a>
+                </div>
+            </li>
+            <?php
+                }
+
+            ?>
+            
             
         </ul>
     </nav>

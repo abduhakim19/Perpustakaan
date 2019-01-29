@@ -64,7 +64,7 @@
             <div class="row mb-5">
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label for="cariBuku">Id Buku</label>
+                        <label for="cariBuku">Nama Buku</label>
                         <input type="text" name="cariBuku" id="cariBuku" class="form-control" placeholder="Cari Nama Buku..">
                             <div class="content-bawahBuku border rounded w-100">
                             
@@ -80,7 +80,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label for="">Nama Buku</label>
+                        <label for="">ID Buku</label>
                         <input type="text" name="kategoritxt" id="kategoritxt" class="form-control" readonly>
                     </div>
                     <div class="form-group">
@@ -102,6 +102,7 @@
                                 <th scope="col">Tgl Pinjam</th>
                                 <th scope="col">Tgl Kembali</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Denda</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>

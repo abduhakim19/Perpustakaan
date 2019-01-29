@@ -4,6 +4,9 @@ class Laporan extends Controller {
 
     public function __construct(){
         $this->load_model('Perpustakaan');
+        if ($_SESSION['user']['role'] == 2) {
+            header('Location: http://localhost/Perpustakaan/Error1/');
+        }
     }
 
     public function index(){

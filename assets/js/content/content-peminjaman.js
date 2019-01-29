@@ -130,15 +130,16 @@ const bawah = (data) => {
     nisntxt.value = data.nisn;
     namatxt.value = data.Nama;
     contentBawah.style.display = 'none';
-    inputNama.value = data.id_anggota;
+    inputNama.value = data.Nama;
+    idNama = data.id_anggota;
 }
 const kategori = document.getElementById('kategoritxt');
 const bawahBuku = (data) => {
     
     contentBawahBuku.style.display = 'none';
     
-    kategori.value  = data.nama_buku;
-    inputBuku.value = data.id_buku;
+    kategori.value  = data.id_buku;
+    inputBuku.value = data.nama_buku;
 }
 
     
@@ -176,18 +177,37 @@ const bawahBuku = (data) => {
                 { "data": null,
                     "title": "#"},
                 {"data": "id_pinjam", "width": "11%", "title": "ID"},
-                {"data": "nama_buku", "width": "25%", "title": "Nama Buku"},
-                {"data": "nama_jenis", "width": "14%", "title": "Kategori"},
+                {"data": "nama_buku", "width": "22%", "title": "Nama Buku"},
+                {"data": "nama_jenis", "width": "13%", "title": "Kategori"},
                 {"data": "tanggal_pinjam", "width": "12%", "title": "Tgl Pinjam",
                 "render": (data) => {
                     return data.split("-").reverse().join("/");
                 }
                 },
-                {"data": "tanggal_kembali", "width": "13%", "title": "Tgl Kembali",
+                {"data": "tanggal_kembali", "width": "12%", "title": "Tgl Kembali",
                 "render": (data)=>{
                     return data.split("-").reverse().join("/")
                 }},
-                {"data": "nama_status", "width": "14%", "title": "Status"},
+                {"data": "nama_status", "width": "10%", "title": "Status"},
+                {"data": null , "width": "10%", "title": "Denda",
+                    "render": (data) => {
+                        if (parseInt(data.id_status) === 1) {
+                            return "Rp. " + data.denda
+                        } else{
+                            const oneday = 24*60*60*1000;
+                            const datePinjam = data.tanggal_kembali.split('-').join(',');
+
+                            const datePreal = new Date(datePinjam);
+                            const dateNreal = new Date();
+                            const jarak  = Math.round((dateNreal.getTime() - datePreal.getTime()) / (oneday));
+                            if (jarak <= 0) {
+                                return "Rp. 0";
+                            } else {
+                                const cari =   jarak / data.jangka ;
+                                return "Rp. " +(Math.floor(cari) + 1) * parseInt(data.harga);
+                            }
+                        }
+                    }},
                 {"data": null, "width": "22%", "title" : "Action",
                 defaultContent: '<i class="fas fa-sync-alt rounded btn-aksi bg-edit" id="cStatus"></i>  <i class="fas fa-trash-alt rounded btn-aksi bg-hapus remove"  id="delete" ></i>'},
             ],
@@ -256,15 +276,13 @@ btnPinjam.addEventListener('click', () => {
         
             return [year, month, day].join('-');
         }
-        console.log(inputBuku.value);
-        console.log(inputNama.value);
-        console.log(formatDate(result));
+        console.log(idNama)
         $.ajax({
             url : 'http://localhost/Perpustakaan/peminjaman/insertPeminjaman',
             type : 'POST',
             data : {
-                "id_buku" : inputBuku.value,
-                "id_anggota" : inputNama.value,
+                "id_buku" : kategori.value,
+                "id_anggota" : idNama,
                 "tgl_kembali" : formatDate(result)
             },
             success : (data) => {
@@ -347,7 +365,8 @@ const alertChangeStatus = async (idPinjam, idBuku) => {
                 "idBuku" : idBuku,
                 "idStatus" : status
             },
-            success: () => {
+            success: (data) => {
+                console.log(data);
                 $('#tablekategori').DataTable().ajax.reload();
                 alertBerhasil("Data Berhasil Diedit")
             },

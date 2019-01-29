@@ -3,10 +3,12 @@
 class Pegawai extends Controller {
     public function __construct(){
         $this->load_model('Perpustakaan');
+        if ($_SESSION['user']['role'] == 2) {
+            header('Location: http://localhost/Perpustakaan/Error1/');
+        }
     }
 
     public function index(){
-        
         $this->view('pegawai');
     }
 
@@ -31,7 +33,7 @@ class Pegawai extends Controller {
         $gambarDestinasi = 'assets/image_admin/'.$namaGambar;
 
 
-        $insert = $this->model->insertPegawai($id, $_POST['nama'], $_POST['email'], $_POST['nomor'], $_POST['username'], md5($_POST['password']), $namaGambar);
+        $insert = $this->model->insertPegawai($id, $_POST['nama'], $_POST['email'], $_POST['nomor'], $_POST['username'], md5($_POST['password']), $namaGambar, $_POST['role']);
         if ($insert) {
             move_uploaded_file( $tnGambar, $gambarDestinasi);
             echo 'berhasil';
@@ -86,12 +88,12 @@ class Pegawai extends Controller {
             $edit = $this->model->editPegawai($_POST['id'], $_POST['nama'], $_POST['email'], $_POST['nomor'], $_POST['username']);
         }
         if ($edit) {
-            if ($_SESSION['id_user'] === $_POST['id']) Session::set($_POST['username']);
+            if ($_SESSION['user']['id'] === $_POST['id']) Session::set($_POST['username']);
                 
             if (isset($namaGambar)) {
                 move_uploaded_file($tnGambar, $gambarDestinasi);
-                if ($_SESSION['id_user'] === $_POST['id']) {
-                    $_SESSION['img'] = $namaGambar;
+                if ($_SESSION['user']['id'] === $_POST['id']) {
+                    $_SESSION['user']['img'] = $namaGambar;
                     $gambar = $namaGambar;
                 }
             }

@@ -21,9 +21,12 @@ class Home extends Controller {
         $login = $this->model->login($username, md5($password));
         if (count($login) > 0) {
             Session::set($username);
-            $_SESSION['id_user'] = $login[0]['id_pegawai'];
+            $_SESSION['user'] = [
+                'id' => $login[0]['id_pegawai'],
+                'img' => $login[0]['poto'],
+                'role' => $login[0]['role']
+            ];
             $_SESSION['pesan'] = 'loginB';
-            $_SESSION['img'] = $login[0]['poto'];
             header('Location: http://localhost/Perpustakaan/home');
         }else {
             $_SESSION['namawow'] = $username;

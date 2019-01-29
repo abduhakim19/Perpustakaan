@@ -20,9 +20,9 @@ inputNama.addEventListener('input', () => {
             html = '';
             for (let i = 0; i < data.length; i++) {
                 contentBawah.style.display = 'block';
-                html = "<div class='bawah' onclick='bawah("+JSON.stringify(data[i])+", this)'>[ "+ +data[i].nisn +" ] "+data[i].Nama+"</div>"
+                html = html + "<div class='bawah' onclick='bawah("+JSON.stringify(data[i])+", this)'>[ "+ +data[i].nisn +" ] "+data[i].Nama+"</div>"
             }
-            return contentBawah.innerHTML = html;
+            contentBawah.innerHTML = html;
         }
     });
 })

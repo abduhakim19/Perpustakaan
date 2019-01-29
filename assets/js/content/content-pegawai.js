@@ -316,6 +316,13 @@ btnTambah.addEventListener('click' , async () => {
         '<label class="text-left">Poto</label>'+
         '<input type="file" id="input-poto" class="form-control form-control-sm">'+
         '</div>'+
+        '<div class="form-group text-left">'+
+        '<label class="text-left">Role</label>'+
+        '<select class="form-control form-control-sm" id="input-role">'+
+        '<option value="1">Admin</option>'+
+        '<option value="2">Pegawai</option>'+
+        '</select>'+
+        '</div>'+
         '</div>',
         focusConfirm: false,
         preConfirm : () => {
@@ -325,7 +332,8 @@ btnTambah.addEventListener('click' , async () => {
                 "nomor" : document.getElementById('input-nmr').value,
                 "username" : document.getElementById('input-user').value,
                 "password" : document.getElementById('input-password').value,
-                "gambar": document.getElementById('input-poto')
+                "gambar": document.getElementById('input-poto'),
+                "role" : document.getElementById('input-role').value
             }
         }
     })
@@ -344,6 +352,7 @@ const saveData = (dataInput) => {
     fd.append('username', dataInput.username);
     fd.append('password', dataInput.password);
     fd.append('gambar', dataInput.gambar.files[0]);
+    fd.append('role', dataInput.role);
     $.ajax({
         url: 'http://localhost/Perpustakaan/Pegawai/insertPegawai',
         type : 'post',
